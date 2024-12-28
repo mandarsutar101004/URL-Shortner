@@ -22,7 +22,14 @@
         name="password"
         placeholder="Enter Your Password"
       />
-      <button type="submit">Sign Up</button>
+      <button type="submit">Submit</button>
     </form>
+    <br />
+    <button onclick="redirectToSignup()">Sign Up</button>
+    <script>
+      function redirectToSignup() {
+        window.location.href = "/signup";
+      }
+    </script>
   </body>
 </html>

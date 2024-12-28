@@ -1,6 +1,6 @@
 const users = require("../models/users");
 // const { v4 } = require("uuid");
-const {  setUserWithToken } = require("../service/auth");
+const { setUserWithToken } = require("../service/auth");
 
 async function signUpUser(req, res) {
   const body = req.body;
@@ -22,7 +22,7 @@ async function loginUser(req, res) {
       error: "Invalid Username or Password",
     });
   } else {
-    const token = setUserWithToken(user);//creating token while login
+    const token = setUserWithToken(user); //creating token while login
     res.cookie("uid", token); //creating cookie in res (params - name of cookie and token created while setUser function)
     return res.redirect("/");
   }

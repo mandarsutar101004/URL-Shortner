@@ -1,7 +1,11 @@
 const shortid = require("shortid");
 const URL = require("../models/shortURL");
+const { getUserWithToken } = require("../service/auth");
 
 async function createShortURL(req, res) {
+  const userUid = req.cookies?.uid;
+  const user = getUserWithToken(userUid);
+  const id = user.id;
   const body = req.body;
   if (!body.originalURL) {
     return res.status(400).json({ Error: " Original Url Required" });
@@ -11,7 +15,7 @@ async function createShortURL(req, res) {
       shortID: shortID,
       originalURL: body.originalURL,
       totalClicks: [],
-      createdBy: req.user._id,
+      createdBy: id,
     });
     return res.render("home", {
       id: shortID,

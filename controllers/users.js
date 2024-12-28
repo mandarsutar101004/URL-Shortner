@@ -28,4 +28,9 @@ async function loginUser(req, res) {
   }
 }
 
-module.exports = { signUpUser, loginUser };
+function logoutUser(req, res) {
+  res.clearCookie("uid");
+  return res.redirect("/login");
+}
+
+module.exports = { signUpUser, loginUser, logoutUser };

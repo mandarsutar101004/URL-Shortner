@@ -5,12 +5,12 @@ const urlSchema = new mongoose.Schema(
   {
     shortID: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     originalURL: {
       type: String,
-      require: true,
+      required: true,
     },
     totalClicks: [
       {
@@ -22,6 +22,7 @@ const urlSchema = new mongoose.Schema(
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
+      required: true,
     },
   },
   { timestamps: true }
